@@ -31,8 +31,6 @@ buttonLogin=Button(root,text="Login",command=onClick)
 buttonLogin.grid(row=2, columnspan=2)
 root.mainloop() 
 
-if fbchat1.iLI(onClick.client):
-	print "yeah"
 
 msgbox=Tk()
 msg=Text(msgbox,width=25, height=5)
