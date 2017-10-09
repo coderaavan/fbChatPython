@@ -20,6 +20,4 @@ PRs are welcome!
 
 ## Features to be implemented
 * Improve UI
-* A logout button for safe logout
 * Creating a broadcast
-* Sending message to group chat
