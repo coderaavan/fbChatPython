@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 from Tkinter import *
-from views.frmLogin import *
+from views.formlogin import FormLogin
+
 
 class App:
 
