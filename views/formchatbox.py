@@ -12,6 +12,7 @@ class FormChatbox(Form):
     def _initialize(self, master, client):
         self.client = client
         self.targetFriend = StringVar()
+        self.group = StringVar()
 
     def _initialize_view(self, master):
         self.labelmessage = Label(master, text = "Type your message here:")
@@ -28,18 +29,24 @@ class FormChatbox(Form):
                                    text="Logout",
                                    command=self._on_logoutbutton_clicked)
 
-        self.labelmessage.grid(row=1, sticky=W)
-        self.textmessage.grid(row=1, column=1)
-        self.friendlabel.grid(row=0, sticky=W)
-        self.friendentry.grid(row=0, column=1, sticky=W)
-        self.sendbutton.grid(row=2, columnspan=2)
-        self.logoutbutton.grid(row=3, columnspan=2)
+        self.grouplabel = Label(master, text = "Name of Group:")
+        self.groupentry = Entry(master, textvariable = self.group)
+
+        self.labelmessage.grid(row = 2, sticky = W)
+        self.textmessage.grid(row = 2, column = 1)
+        self.friendlabel.grid(row = 0, sticky=W)
+        self.friendentry.grid(row = 0, column = 1, sticky = W)
+        self.sendbutton.grid(row = 3, columnspan = 2)
+        self.logoutbutton.grid(row = 4, columnspan = 2)
+        self.grouplabel.grid(row = 1,sticky = W)
+        self.groupentry.grid(row = 1, column = 1, sticky = W)
 
     def _on_sendbutton_clicked(self):
-        frnd = self.friendentry.get()
+        friend = self.friendentry.get()
+	group = self.groupentry.get()
         message = self.textmessage.get(1.0, END)
         self.textmessage.delete(1.0, END)
-        send_msg(self.client, message, frnd)
+        sendmsg(self.client, message, friend, group)
 
     def _on_logoutbutton_clicked(self):
         if self.client:
