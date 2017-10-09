@@ -11,7 +11,9 @@ class App:
         self.currentView = FormLogin(self.master)
 
     def run(self):
-        self.master.mainloop()
+		self.master.title("fbChat")
+		self.master.geometry("250x80")
+		self.master.mainloop()
 
 
 if __name__ == "__main__":

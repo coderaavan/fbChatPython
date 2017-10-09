@@ -38,4 +38,6 @@ class FormLogin(Form):
         client = login(username, password)
         Form.root.destroy()
         from formchatbox import FormChatbox
-        FormChatbox(Tk(), client)
+        chatbox = Tk()
+        chatbox.title("fbChat")
+        FormChatbox(chatbox, client)
