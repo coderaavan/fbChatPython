@@ -20,7 +20,6 @@ def _on_buttonlogin_clicked():
 
 def _on_sendbutton_clicked():
 	frnd = friendentry.get()
-	friendentry.delete(0, END)
 	message = msg.get(1.0, END)
 	msg.delete(1.0, END)	
 	chat.send_msg(_on_buttonlogin_clicked.client, message, frnd)
