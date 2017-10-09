@@ -16,8 +16,6 @@ def onClick():
 def onClick2():
 	frnd=friendentry.get()
 	grp=groupentry.get()
-	friendentry.delete(0,END)
-	groupentry.delete(0,END)
 	message=msg.get(1.0,END)
 	msg.delete(1.0,END)	
 	fbchat1.sendmsg(onClick.client,message,frnd,grp)
