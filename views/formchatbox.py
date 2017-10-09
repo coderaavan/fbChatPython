@@ -43,7 +43,7 @@ class FormChatbox(Form):
 
     def _on_sendbutton_clicked(self):
         friend = self.friendentry.get()
-	group = self.groupentry.get()
+        group = self.groupentry.get()
         message = self.textmessage.get(1.0, END)
         self.textmessage.delete(1.0, END)
         sendmsg(self.client, message, friend, group)
