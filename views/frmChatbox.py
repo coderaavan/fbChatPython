@@ -32,7 +32,6 @@ class FormChatbox(Form):
 
     def _on_sendbutton_clicked(self):
 	frnd = self.friendentry.get()
-	self.friendentry.delete(0, END)
 	message = self.textmessage.get(1.0, END)
 	self.textmessage.delete(1.0, END)	
 	send_msg(self.client, message, frnd)
