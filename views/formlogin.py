@@ -30,12 +30,12 @@ class FormLogin(Form):
                                   text="Login",
                                   command=self._on_buttonlogin_clicked)
 
-        self.fblogo.grid(row=0, column=0)
+        self.fblogo.grid(row=0, column=0, rowspan=2, pady=5)
         self.labelid.grid(row=0, column=1)
         self.labelpass.grid(row=1, column=1)
         self.entryid.grid(row=0, column=2)
         self.entrypass.grid(row=1, column=2)
-        self.buttonlogin.grid(row=2, columnspan=2)
+        self.buttonlogin.grid(row=2, column=1, columnspan=2)
 
     def _on_buttonlogin_clicked(self):
         username = self.username.get()
