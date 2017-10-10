@@ -36,7 +36,7 @@ class FormLogin(Form):
         username = self.username.get()
         password = self.password.get()
         client = login(username, password)
-        Form.root.destroy()
+        self.close()
         from formchatbox import FormChatbox
         chatbox = Tk()
         chatbox.title("fbChat")
