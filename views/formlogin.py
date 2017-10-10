@@ -35,7 +35,17 @@ class FormLogin(Form):
     def _on_buttonlogin_clicked(self):
         username = self.username.get()
         password = self.password.get()
-        client = login(username, password)
-        Form.root.destroy()
-        from formchatbox import FormChatbox
-        FormChatbox(Tk(), client)
+        try:
+ 	    client = login(username, password)
+            Form.root.destroy()
+            from formchatbox import FormChatbox
+            chatbox = Tk()
+            chatbox.title("fbChat")
+            FormChatbox(chatbox, client)
+        except FBchatUserError:
+            Form.root.destroy()
+            from formloginfailure import FormLoginFailure
+            err_chatbox = Tk()
+            err_chatbox.title("Login Error")
+            FormLoginFailure(err_chatbox)
+             
