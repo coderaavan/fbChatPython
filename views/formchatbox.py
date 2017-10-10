@@ -50,10 +50,6 @@ class FormChatbox(Form):
         friendlist  = inputFriend.split(",")
         grouplist = inputGroup.split(",")
 
-        # if len(friendlist) > 1 or len(grouplist) > 1:
-        #     broadcast(self.client, message, friendlist , grouplist)
-        # else:
-        #     sendmsg(self.client, message, inputFriend , inputGroup)
         sendmsg(self.client, message, friendlist, grouplist)
 
     def _on_logoutbutton_clicked(self):
