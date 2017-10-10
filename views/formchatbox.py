@@ -34,7 +34,7 @@ class FormChatbox(Form):
 
         self.labelmessage.grid(row = 2, sticky = W)
         self.textmessage.grid(row = 2, column = 1)
-        self.friendlabel.grid(row = 0, sticky=W)
+        self.friendlabel.grid(row = 0, sticky = W)
         self.friendentry.grid(row = 0, column = 1, sticky = W)
         self.sendbutton.grid(row = 3, columnspan = 2)
         self.logoutbutton.grid(row = 4, columnspan = 2)
@@ -42,23 +42,30 @@ class FormChatbox(Form):
         self.groupentry.grid(row = 1, column = 1, sticky = W)
 
     def _on_sendbutton_clicked(self):
-        friend = self.friendentry.get()
-        group = self.groupentry.get()
+        inputFriend  = self.friendentry.get()
+        inputGroup = self.groupentry.get()
         message = self.textmessage.get(1.0, END)
         self.textmessage.delete(1.0, END)
-        sendmsg(self.client, message, friend, group)
+
+        friendlist  = inputFriend.split(",")
+        grouplist = inputGroup.split(",")
+
+        # if len(friendlist) > 1 or len(grouplist) > 1:
+        #     broadcast(self.client, message, friendlist , grouplist)
+        # else:
+        #     sendmsg(self.client, message, inputFriend , inputGroup)
+        sendmsg(self.client, message, friendlist, grouplist)
 
     def _on_logoutbutton_clicked(self):
         if self.client:
             isSuccess = self.client.logout()
 
             if isSuccess:
-				print("Already Logout...")
-
-				Form.root.destroy()
-				from formlogin import FormLogin
-				loginbox = Tk()
-				loginbox.title("fbChat")
-				loginbox.geometry("250x80")
-				FormLogin(loginbox)
+                print("Already Logout...")
+                Form.root.destroy()
+                from formlogin import FormLogin
+                loginbox = Tk()
+                loginbox.title("fbChat")
+                loginbox.geometry("250x80")
+                FormLogin(loginbox)
 
