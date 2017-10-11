@@ -1,6 +1,7 @@
 from Tkinter import *
 from libs.fbchat1 import *
 from form import Form
+from PIL import Image, ImageTk
 
 class FormLogin(Form):
 
@@ -16,7 +17,10 @@ class FormLogin(Form):
         self.message = StringVar()
 
     def _initialize_view(self, master):
-        self.labelid = Label(master, text="LoginID:")
+        fbphoto = PhotoImage(file='img/FB-f-Logo_blue_58.gif')
+        self.fblogo = Label(master, image=fbphoto)
+        self.fblogo.image = fbphoto
+	self.labelid = Label(master, text="LoginID:")
         self.labelpass = Label(master, text="Password:")
 
         self.entryid = Entry(master, textvariable=self.username)
@@ -26,11 +30,12 @@ class FormLogin(Form):
                                   text="Login",
                                   command=self._on_buttonlogin_clicked)
 
-        self.labelid.grid(row=0, sticky=W)
-        self.labelpass.grid(row=1, sticky=W)
-        self.entryid.grid(row=0, column=1)
-        self.entrypass.grid(row=1, column=1)
-        self.buttonlogin.grid(row=2, columnspan=2)
+        self.fblogo.grid(row=0, column=0, rowspan=2, pady=5)
+        self.labelid.grid(row=0, column=1)
+        self.labelpass.grid(row=1, column=1)
+        self.entryid.grid(row=0, column=2)
+        self.entrypass.grid(row=1, column=2)
+        self.buttonlogin.grid(row=2, column=1, columnspan=2)
 
     def _on_buttonlogin_clicked(self):
         username = self.username.get()
