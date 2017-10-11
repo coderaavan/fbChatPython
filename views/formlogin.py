@@ -37,15 +37,15 @@ class FormLogin(Form):
         password = self.password.get()
         try:
  	    client = login(username, password)
-            Form.root.destroy()
+            self.close()
             from formchatbox import FormChatbox
             chatbox = Tk()
             chatbox.title("fbChat")
             FormChatbox(chatbox, client)
         except FBchatUserError:
-            Form.root.destroy()
+            self.close()
             from formloginfailure import FormLoginFailure
             err_chatbox = Tk()
             err_chatbox.title("Login Error")
             FormLoginFailure(err_chatbox)
-             
+

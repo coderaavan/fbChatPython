@@ -22,7 +22,7 @@ class FormLoginFailure(Form):
                                          command=self._on_loginagainbutton_clicked)
         self.loginagainbutton.pack()
     def _on_loginagainbutton_clicked(self):
-        Form.root.destroy()
+        self.close()
         from formlogin import FormLogin
 	loginbox = Tk()
 	loginbox.title("fbChat")
