@@ -62,9 +62,9 @@ class FormChatbox(Form):
             if isSuccess:
 				print("Already Logout...")
 
-				Form.root.destroy()
+                                self.close()
 				from formlogin import FormLogin
 				loginbox = Tk()
 				loginbox.title("fbChat")
-				loginbox.geometry("250x80")
+				loginbox.geometry("250x100")
 				FormLogin(loginbox)

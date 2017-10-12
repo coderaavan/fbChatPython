@@ -8,12 +8,12 @@ class App:
 
     def __init__(self):
         self.master = Tk()
+        self.master.title("fbChat")
+        self.master.geometry("250x100")
         self.currentView = FormLogin(self.master)
 
     def run(self):
-		self.master.title("fbChat")
-		self.master.geometry("250x80")
-		self.master.mainloop()
+        self.master.mainloop()
 
 
 if __name__ == "__main__":

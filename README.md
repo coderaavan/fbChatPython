@@ -20,4 +20,3 @@ PRs are welcome!
 
 ## Features to be implemented
 * Improve UI
-* Creating a broadcast
