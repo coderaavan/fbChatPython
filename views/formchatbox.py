@@ -16,6 +16,7 @@ class FormChatbox(Form):
         self.broadcast = StringVar()
 
     def _initialize_view(self, master):
+        self.master.title("fbChat")
         self.labelmessage = Label(master, text = "Type your message here:")
         self.textmessage = Text(master, width = 25, height = 5)
 
@@ -60,11 +61,7 @@ class FormChatbox(Form):
             isSuccess = self.client.logout()
 
             if isSuccess:
-				print("Already Logout...")
-
-                                self.close()
-				from formlogin import FormLogin
-				loginbox = Tk()
-				loginbox.title("fbChat")
-				loginbox.geometry("250x100")
-				FormLogin(loginbox)
+                print("Already Logout...")
+                self.close()
+                from formlogin import FormLogin
+                FormLogin(Tk())
