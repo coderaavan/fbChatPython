@@ -16,7 +16,7 @@ def sendmsg(client, msg, name, groupname, broadcast):
 		friendlist = broadcast.split(',')
 	if (len(name) > 0):
 		if name not in friendlist:
-			friendlist.add(name)
+			friendlist.append(name)
 	if (len(friendlist) > 0):
 		for eachfriend in friendlist:
 			friends = client.searchForUsers(eachfriend)
