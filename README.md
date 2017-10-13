@@ -1,6 +1,8 @@
 # fbChatPython
 A Tkinter based GUI to login and send messages to your Facebook friends.
 
+[![Join the chat at https://gitter.im/fbChatPython/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/fbChatPython/Lobby)
+
 ## Getting Started
 * Fork the repository
 * Clone it to your local system
