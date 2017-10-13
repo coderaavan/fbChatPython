@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from Tkinter import *
+from tkinter import *
 from views.formlogin import FormLogin
 
 

@@ -1,6 +1,7 @@
-from Tkinter import *
-from libs.fbchat1 import *
-from form import Form
+from tkinter import StringVar, PhotoImage, Label, Entry, Button, Tk
+from views.libs.fbchat1 import *
+from fbchat import FBchatUserError
+from views.form import Form
 from PIL import Image, ImageTk
 
 class FormLogin(Form):
@@ -20,7 +21,7 @@ class FormLogin(Form):
         fbphoto = PhotoImage(file='img/FB-f-Logo_blue_58.gif')
         self.fblogo = Label(master, image=fbphoto)
         self.fblogo.image = fbphoto
-	self.labelid = Label(master, text="LoginID:")
+        self.labelid = Label(master, text="LoginID:")
         self.labelpass = Label(master, text="Password:")
 
         self.entryid = Entry(master, textvariable=self.username)
@@ -41,15 +42,15 @@ class FormLogin(Form):
         username = self.username.get()
         password = self.password.get()
         try:
- 	    client = login(username, password)
+            client = login(username, password)
             self.close()
-            from formchatbox import FormChatbox
+            from views.formchatbox import FormChatbox
             chatbox = Tk()
             chatbox.title("fbChat")
             FormChatbox(chatbox, client)
         except FBchatUserError:
             self.close()
-            from formloginfailure import FormLoginFailure
+            from views.formloginfailure import FormLoginFailure
             err_chatbox = Tk()
             err_chatbox.title("Login Error")
             FormLoginFailure(err_chatbox)

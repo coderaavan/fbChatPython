@@ -1,6 +1,7 @@
-from Tkinter import *
-from libs.fbchat1 import *
-from form import Form
+from tkinter import StringVar, Label, Text, Entry, Button, END, W, Tk
+from views.form import Form
+from views.libs.fbchat1 import sendmsg
+
 
 class FormChatbox(Form):
 
@@ -16,36 +17,36 @@ class FormChatbox(Form):
         self.broadcast = StringVar()
 
     def _initialize_view(self, master):
-        self.labelmessage = Label(master, text = "Type your message here:")
-        self.textmessage = Text(master, width = 25, height = 5)
+        self.labelmessage = Label(master, text="Type your message here:")
+        self.textmessage = Text(master, width=25, height=5)
 
-        self.friendlabel = Label(master, text = "Name of friend:")
-        self.friendentry = Entry(master, textvariable = self.targetFriend)
+        self.friendlabel = Label(master, text="Name of friend:")
+        self.friendentry = Entry(master, textvariable=self.targetFriend)
 
         self.sendbutton = Button(master,
-                                 text = "Send Message",
-                                 command = self._on_sendbutton_clicked)
+                                 text="Send Message",
+                                 command=self._on_sendbutton_clicked)
 
         self.logoutbutton = Button(master,
                                    text="Logout",
                                    command=self._on_logoutbutton_clicked)
 
-        self.grouplabel = Label(master, text = "Name of Group:")
-        self.groupentry = Entry(master, textvariable = self.group)
+        self.grouplabel = Label(master, text="Name of Group:")
+        self.groupentry = Entry(master, textvariable=self.group)
 
-        self.broadcastlabel = Label(master, text = "Name of friend(s):")
-        self.broadcastentry = Entry(master, textvariable = self.broadcast)
+        self.broadcastlabel = Label(master, text="Name of friend(s):")
+        self.broadcastentry = Entry(master, textvariable=self.broadcast)
 
-        self.labelmessage.grid(row = 3, sticky = W)
-        self.textmessage.grid(row = 3, column = 1)
-        self.friendlabel.grid(row = 0, sticky=W)
-        self.friendentry.grid(row = 0, column = 1, sticky = W)
-        self.sendbutton.grid(row = 4, columnspan = 2)
-        self.logoutbutton.grid(row = 5, columnspan = 2)
-        self.grouplabel.grid(row = 1,sticky = W)
-        self.groupentry.grid(row = 1, column = 1, sticky = W)
-        self.broadcastlabel.grid(row = 2,sticky = W)
-        self.broadcastentry.grid(row = 2, column = 1, sticky = W)
+        self.labelmessage.grid(row=3, sticky=W)
+        self.textmessage.grid(row=3, column=1)
+        self.friendlabel.grid(row=0, sticky=W)
+        self.friendentry.grid(row=0, column=1, sticky=W)
+        self.sendbutton.grid(row=4, columnspan=2)
+        self.logoutbutton.grid(row=5, columnspan=2)
+        self.grouplabel.grid(row=1,sticky=W)
+        self.groupentry.grid(row=1, column=1, sticky=W)
+        self.broadcastlabel.grid(row=2,sticky=W)
+        self.broadcastentry.grid(row=2, column=1, sticky=W)
 
     def _on_sendbutton_clicked(self):
         friend = self.friendentry.get()
@@ -60,11 +61,10 @@ class FormChatbox(Form):
             isSuccess = self.client.logout()
 
             if isSuccess:
-				print("Already Logout...")
-
-                                self.close()
-				from formlogin import FormLogin
-				loginbox = Tk()
-				loginbox.title("fbChat")
-				loginbox.geometry("250x100")
-				FormLogin(loginbox)
+                print("Already Logout...")
+                self.close()
+                from views.formlogin import FormLogin
+                loginbox = Tk()
+                loginbox.title("fbChat")
+                loginbox.geometry("250x100")
+                FormLogin(loginbox)

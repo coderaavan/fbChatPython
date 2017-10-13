@@ -1,5 +1,5 @@
-from Tkinter import *
-from form import Form
+from tkinter import Text, INSERT, Button, Tk
+from views.form import Form
 
 
 class FormLoginFailure(Form):
@@ -23,8 +23,8 @@ class FormLoginFailure(Form):
         self.loginagainbutton.pack()
     def _on_loginagainbutton_clicked(self):
         self.close()
-        from formlogin import FormLogin
-	loginbox = Tk()
-	loginbox.title("fbChat")
-	loginbox.geometry("250x100")
-	FormLogin(loginbox)
+        from views.formlogin import FormLogin
+        loginbox = Tk()
+        loginbox.title("fbChat")
+        loginbox.geometry("250x100")
+        FormLogin(loginbox)
