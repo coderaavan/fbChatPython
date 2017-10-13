@@ -17,6 +17,8 @@ class FormLogin(Form):
         self.message = StringVar()
 
     def _initialize_view(self, master):
+        self.master.title("fbChat")
+        self.master.geometry("250x100")
         fbphoto = PhotoImage(file='img/FB-f-Logo_blue_58.gif')
         self.fblogo = Label(master, image=fbphoto)
         self.fblogo.image = fbphoto
@@ -44,13 +46,10 @@ class FormLogin(Form):
  	    client = login(username, password)
             self.close()
             from formchatbox import FormChatbox
-            chatbox = Tk()
-            chatbox.title("fbChat")
-            FormChatbox(chatbox, client)
+            FormChatbox(Tk(), client)
+
         except FBchatUserError:
             self.close()
             from formloginfailure import FormLoginFailure
-            err_chatbox = Tk()
-            err_chatbox.title("Login Error")
-            FormLoginFailure(err_chatbox)
+            FormLoginFailure(Tk())
 

@@ -13,6 +13,7 @@ class FormLoginFailure(Form):
         pass
 
     def _initialize_view(self, master):
+        self.master.title("Login Error")
         self.err_text_widget = Text(master, bg='#3b5998', fg='#ffffff', height=5, width=40, font=("TkDefaultFont", "12"))
         self.err_text_widget.insert(INSERT, "Invalid loginID/Password combination!\nPlease try again!")
         self.err_text_widget.pack()
@@ -24,7 +25,4 @@ class FormLoginFailure(Form):
     def _on_loginagainbutton_clicked(self):
         self.close()
         from formlogin import FormLogin
-	loginbox = Tk()
-	loginbox.title("fbChat")
-	loginbox.geometry("250x100")
-	FormLogin(loginbox)
+	FormLogin(Tk())
