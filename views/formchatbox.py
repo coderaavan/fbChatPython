@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 from libs.fbchat1 import *
 from form import Form
 
