@@ -1,5 +1,6 @@
 from Tkinter import *
 from form import Form
+from Tkinter import font
 
 
 class FormLoginFailure(Form):
@@ -14,15 +15,31 @@ class FormLoginFailure(Form):
 
     def _initialize_view(self, master):
         self.master.title("Login Error")
-        self.err_text_widget = Text(master, bg='#3b5998', fg='#ffffff', height=5, width=40, font=("TkDefaultFont", "12"))
-        self.err_text_widget.insert(INSERT, "Invalid loginID/Password combination!\nPlease try again!")
-        self.err_text_widget.pack()
-    
+        self.master.geometry("350x200+600+300")
+        self.master.config(bg="#E9EBEE")
+        self.master.resizable(0,0)
+        self.master.overrideredirect(1)
+        # change the font accordingly
+        self.someFont = font.Font(family='Ubuntu', size=10, weight='normal')
+
+        self.topFrame = Frame(self.master,width=350,height=30,bg="#4267B2")
+        self.topFrame.grid(row=0,column=0,ipadx=160)
+
+        self.closebutton = Button(self.topFrame,text="X",command=self._on_loginagainbutton_clicked,bd=0,\
+                            bg="#4267B2",activebackground="#4267B2",fg="#FFFFFB",highlightthickness=0,\
+                            cursor="hand2",activeforeground="#FFFFFB")
+        self.closebutton.grid(row=0,column=0,sticky=W,padx=2,pady=3,ipadx=2,ipady=3)
+
+        self.err_text = Label(master, text="Couldn't log you in. Incorrect Email/Password",\
+                            font = self.someFont,bg='#BE4B49', fg='#FFFFFB')
+        self.err_text.grid(row=1,column=0,padx=5,pady=10,ipady=10,ipadx=3)
         self.loginagainbutton = Button(master,
-                                         text="Login Again",
-                                         command=self._on_loginagainbutton_clicked)
-        self.loginagainbutton.pack()
+                                         text="Try logging in Again",
+                                         command=self._on_loginagainbutton_clicked,cursor="hand2",
+                                         bg="#3B5998",fg="#FFFFFB",activebackground="#365899",activeforeground="#FFFFFB")
+        self.loginagainbutton.grid(row=2,column=0,pady=30,ipady=5,padx=10)
+
     def _on_loginagainbutton_clicked(self):
         self.close()
         from formlogin import FormLogin
-	FormLogin(Tk())
+        FormLogin(Tk())
