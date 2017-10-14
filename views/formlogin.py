@@ -56,5 +56,5 @@ class FormLogin(Form):
 
         except FBchatUserError:
             self.close()
-            from .formloginfailure import FormLoginFailure
+            from formloginfailure import FormLoginFailure
             FormLoginFailure(Tk())
