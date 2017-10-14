@@ -1,6 +1,6 @@
-from Tkinter import *
-from libs.fbchat1 import *
-from form import Form
+from tkinter import *
+from .libs.fbchat1 import *
+from .form import Form
 from PIL import Image, ImageTk
 
 class FormLogin(Form):
