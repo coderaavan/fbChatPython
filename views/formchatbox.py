@@ -1,6 +1,11 @@
-from Tkinter import *
-from libs.fbchat1 import *
-from form import Form
+try:
+    from tkinter import *
+    from .libs.fbchat1 import *
+    from .form import Form
+except ImportError:
+    from Tkinter import *
+    from libs.fbchat1 import *
+    from form import Form
 
 class FormChatbox(Form):
 
@@ -63,5 +68,8 @@ class FormChatbox(Form):
             if isSuccess:
                 print("Already Logout...")
                 self.close()
-                from formlogin import FormLogin
+                try:
+                    from formlogin import FormLogin
+                except ImportError:
+                    from .formlogin import FormLogin
                 FormLogin(Tk())

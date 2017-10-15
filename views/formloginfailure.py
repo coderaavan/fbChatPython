@@ -1,6 +1,11 @@
-from Tkinter import *
-from form import Form
-#from Tkinter import font
+
+try:
+    from tkinter import *
+    from .form import Form
+    #from tkinter import font
+except ImportError:
+    from Tkinter import *
+    from form import Form
 
 
 class FormLoginFailure(Form):
@@ -41,5 +46,9 @@ class FormLoginFailure(Form):
 
     def _on_loginagainbutton_clicked(self):
         self.close()
-        from formlogin import FormLogin
+        try:
+            from .formlogin import FormLogin
+        except ImportError:
+            # python2
+            from formlogin import FormLogin
         FormLogin(Tk())

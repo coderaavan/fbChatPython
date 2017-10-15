@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 
-from Tkinter import *
-from views.formlogin import FormLogin
+try:
+    from tkinter import *
+    from views.formlogin import FormLogin
+except ImportError:
+    from Tkinter import *
+    from views.formlogin import FormLogin
 
 
 class App:

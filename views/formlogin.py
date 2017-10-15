@@ -1,7 +1,14 @@
-from Tkinter import *
-from libs.fbchat1 import *
-from form import Form
-from PIL import Image, ImageTk
+
+try:
+    from tkinter import *
+    from .libs.fbchat1 import *
+    from .form import Form
+except ImportError:
+    from Tkinter import *
+    from libs.fbchat1 import *
+    from form import Form
+finally:
+    from PIL import Image, ImageTk
 
 class FormLogin(Form):
 
@@ -18,7 +25,7 @@ class FormLogin(Form):
 
     def _initialize_view(self, master):
         self.master.title("fbChat")
-        self.master.geometry("350x300")
+        self.master.geometry("350x300+600+300")
         self.master.config(bg='#E9EBEE')
         fbphoto = PhotoImage(file='img/FB-f-Logo_blue_58.gif')
         self.fbImageFrame = Frame(master,width=350,height=30,bg='#4267B2')
@@ -51,10 +58,17 @@ class FormLogin(Form):
         try:
             client = login(username, password)
             self.close()
-            from formchatbox import FormChatbox
+            try:
+                from .formchatbox import FormChatbox
+            except:
+                from formchatbox import FormChatbox
+
             FormChatbox(Tk(), client)
 
         except FBchatUserError:
             self.close()
-            from formloginfailure import FormLoginFailure
+            try:
+                from .formloginfailure import FormLoginFailure
+            except:
+                from formloginfailure import FormLoginFailure
             FormLoginFailure(Tk())
