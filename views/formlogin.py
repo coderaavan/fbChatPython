@@ -5,14 +5,14 @@ from PIL import Image, ImageTk
 
 class FormLogin(Form):
 
-    def __init__(self, master):
-	master.bind("<Return>", self._on_buttonlogin_clicked)
+    def __init__(self, master):	
         Form.__init__(self, master)
         self._initialize(master)
         self._initialize_view(master)
 
     def _initialize(self, master):
-        self.username = StringVar()
+        master.bind("<Return>", self._on_buttonlogin_clicked)
+	self.username = StringVar()
         self.password = StringVar()
         self.friend = StringVar()
         self.message = StringVar()
