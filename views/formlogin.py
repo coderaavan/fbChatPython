@@ -5,13 +5,13 @@ from PIL import Image, ImageTk
 
 class FormLogin(Form):
 
-    def __init__(self, master):
+    def __init__(self, master):	
         Form.__init__(self, master)
         self._initialize(master)
         self._initialize_view(master)
 
     def _initialize(self, master):
-        self.username = StringVar()
+	self.username = StringVar()
         self.password = StringVar()
         self.friend = StringVar()
         self.message = StringVar()
@@ -19,6 +19,7 @@ class FormLogin(Form):
     def _initialize_view(self, master):
         self.master.title("fbChat")
         self.master.geometry("250x100")
+        self.master.bind("<Return>", self._on_buttonlogin_clicked)
         fbphoto = PhotoImage(file='img/FB-f-Logo_blue_58.gif')
         self.fblogo = Label(master, image=fbphoto)
         self.fblogo.image = fbphoto
@@ -31,7 +32,6 @@ class FormLogin(Form):
         self.buttonlogin = Button(master,
                                   text="Login",
                                   command=self._on_buttonlogin_clicked)
-
         self.fblogo.grid(row=0, column=0, rowspan=2, pady=5)
         self.labelid.grid(row=0, column=1)
         self.labelpass.grid(row=1, column=1)
@@ -39,7 +39,7 @@ class FormLogin(Form):
         self.entrypass.grid(row=1, column=2)
         self.buttonlogin.grid(row=2, column=1, columnspan=2)
 
-    def _on_buttonlogin_clicked(self):
+    def _on_buttonlogin_clicked(self, event=None):
         username = self.username.get()
         password = self.password.get()
         try:
