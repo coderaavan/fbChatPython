@@ -11,7 +11,6 @@ class FormLogin(Form):
         self._initialize_view(master)
 
     def _initialize(self, master):
-        master.bind("<Return>", self._on_buttonlogin_clicked)
 	self.username = StringVar()
         self.password = StringVar()
         self.friend = StringVar()
@@ -20,6 +19,7 @@ class FormLogin(Form):
     def _initialize_view(self, master):
         self.master.title("fbChat")
         self.master.geometry("250x100")
+        self.master.bind("<Return>", self._on_buttonlogin_clicked)
         fbphoto = PhotoImage(file='img/FB-f-Logo_blue_58.gif')
         self.fblogo = Label(master, image=fbphoto)
         self.fblogo.image = fbphoto
