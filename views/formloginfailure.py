@@ -1,6 +1,6 @@
 from Tkinter import *
 from form import Form
-from Tkinter import font
+#from Tkinter import font
 
 
 class FormLoginFailure(Form):
@@ -20,7 +20,7 @@ class FormLoginFailure(Form):
         self.master.resizable(0,0)
         self.master.overrideredirect(1)
         # change the font accordingly
-        self.someFont = font.Font(family='Ubuntu', size=10, weight='normal')
+        #self.someFont = font.Font(family='Ubuntu', size=10, weight='normal')
 
         self.topFrame = Frame(self.master,width=350,height=30,bg="#4267B2")
         self.topFrame.grid(row=0,column=0,ipadx=160)
@@ -31,7 +31,7 @@ class FormLoginFailure(Form):
         self.closebutton.grid(row=0,column=0,sticky=W,padx=2,pady=3,ipadx=2,ipady=3)
 
         self.err_text = Label(master, text="Couldn't log you in. Incorrect Email/Password",\
-                            font = self.someFont,bg='#BE4B49', fg='#FFFFFB')
+                            bg='#BE4B49', fg='#FFFFFB')
         self.err_text.grid(row=1,column=0,padx=5,pady=10,ipady=10,ipadx=3)
         self.loginagainbutton = Button(master,
                                          text="Try logging in Again",
