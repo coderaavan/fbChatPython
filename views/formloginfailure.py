@@ -5,6 +5,7 @@ from form import Form
 class FormLoginFailure(Form):
 
     def __init__(self, master):
+        master.bind("<Return>", self._on_loginagainbutton_clicked)
         Form.__init__(self, master)
         self._initialize(master)
         self._initialize_view(master)
@@ -22,7 +23,7 @@ class FormLoginFailure(Form):
                                          text="Login Again",
                                          command=self._on_loginagainbutton_clicked)
         self.loginagainbutton.pack()
-    def _on_loginagainbutton_clicked(self):
+    def _on_loginagainbutton_clicked(self, event=None):
         self.close()
         from formlogin import FormLogin
 	FormLogin(Tk())

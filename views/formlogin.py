@@ -6,6 +6,7 @@ from PIL import Image, ImageTk
 class FormLogin(Form):
 
     def __init__(self, master):
+	master.bind("<Return>", self._on_buttonlogin_clicked)
         Form.__init__(self, master)
         self._initialize(master)
         self._initialize_view(master)
@@ -31,7 +32,6 @@ class FormLogin(Form):
         self.buttonlogin = Button(master,
                                   text="Login",
                                   command=self._on_buttonlogin_clicked)
-
         self.fblogo.grid(row=0, column=0, rowspan=2, pady=5)
         self.labelid.grid(row=0, column=1)
         self.labelpass.grid(row=1, column=1)
@@ -39,7 +39,7 @@ class FormLogin(Form):
         self.entrypass.grid(row=1, column=2)
         self.buttonlogin.grid(row=2, column=1, columnspan=2)
 
-    def _on_buttonlogin_clicked(self):
+    def _on_buttonlogin_clicked(self, event=None):
         username = self.username.get()
         password = self.password.get()
         try:
