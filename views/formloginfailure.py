@@ -23,7 +23,10 @@ class FormLoginFailure(Form):
         self.master.geometry("350x200+600+300")
         self.master.config(bg="#E9EBEE")
         self.master.resizable(0,0)
-        self.master.overrideredirect(1)
+
+	self.master.bind("<Return>", self._on_loginagainbutton_clicked)
+        #self.master.overrideredirect(1)
+
         # change the font accordingly
         #self.someFont = font.Font(family='Ubuntu', size=10, weight='normal')
 
@@ -44,7 +47,7 @@ class FormLoginFailure(Form):
                                          bg="#3B5998",fg="#FFFFFB",activebackground="#365899",activeforeground="#FFFFFB")
         self.loginagainbutton.grid(row=2,column=0,pady=30,ipady=5,padx=10)
 
-    def _on_loginagainbutton_clicked(self):
+    def _on_loginagainbutton_clicked(self, event=None):
         self.close()
         try:
             from .formlogin import FormLogin

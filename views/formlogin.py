@@ -27,6 +27,7 @@ class FormLogin(Form):
         self.master.title("fbChat")
         self.master.geometry("350x300+600+300")
         self.master.config(bg='#E9EBEE')
+	self.master.bind("<Return>", self._on_buttonlogin_clicked)
         fbphoto = PhotoImage(file='img/FB-f-Logo_blue_58.gif')
         self.fbImageFrame = Frame(master,width=350,height=30,bg='#4267B2')
         self.fblogo = Label(master, image=fbphoto)
@@ -52,7 +53,7 @@ class FormLogin(Form):
         self.entrypass.grid(row=5, column=0,pady=5,ipady=5)
         self.buttonlogin.grid(row=6, column=0, columnspan=2,pady=5)
 
-    def _on_buttonlogin_clicked(self):
+    def _on_buttonlogin_clicked(self, event=None):
         username = self.username.get()
         password = self.password.get()
         try:
