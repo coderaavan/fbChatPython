@@ -1,7 +1,14 @@
-from Tkinter import *
-from libs.fbchat1 import *
-from form import Form
-from PIL import Image, ImageTk
+
+try:
+    from tkinter import *
+    from .libs.fbchat1 import *
+    from .form import Form
+except ImportError:
+    from Tkinter import *
+    from libs.fbchat1 import *
+    from form import Form
+finally:
+    from PIL import Image, ImageTk
 
 class FormLogin(Form):
 
@@ -18,9 +25,11 @@ class FormLogin(Form):
 
     def _initialize_view(self, master):
         self.master.title("fbChat")
-        self.master.geometry("350x300")
+        self.master.geometry("350x340+600+300")
         self.master.config(bg='#E9EBEE')
+        self.master.resizable(0,0)
         fbphoto = PhotoImage(file='img/FB-f-Logo_blue_58.gif')
+        self.master.bind("<Return>", self._on_buttonlogin_clicked)
         self.fbImageFrame = Frame(master,width=350,height=30,bg='#4267B2')
         self.fblogo = Label(master, image=fbphoto)
         self.fblogo.image = fbphoto
@@ -45,16 +54,30 @@ class FormLogin(Form):
         self.entrypass.grid(row=5, column=0,pady=5,ipady=5)
         self.buttonlogin.grid(row=6, column=0, columnspan=2,pady=5)
 
-    def _on_buttonlogin_clicked(self):
+        self.login_state_info = Label(self.master,text="...",bg="#E9EBEE",fg="#365899")
+        self.login_state_info.grid(row=7,column=0,pady=5,ipady=5)
+
+    def _on_buttonlogin_clicked(self, event=None):
+        # display logging in text
+        self.login_state_info.config(text="Logging you in...")
+        self.master.update()
         username = self.username.get()
         password = self.password.get()
         try:
             client = login(username, password)
             self.close()
-            from formchatbox import FormChatbox
+            try:
+                from .formchatbox import FormChatbox
+            except:
+                from formchatbox import FormChatbox
+
             FormChatbox(Tk(), client)
 
         except FBchatUserError:
-            self.close()
-            from formloginfailure import FormLoginFailure
-            FormLoginFailure(Tk())
+            self.master.withdraw() # hide the window instead of destroying it
+            try:
+                from .formloginfailure import FormLoginFailure
+            except:
+                from formloginfailure import FormLoginFailure
+            finally:
+                FormLoginFailure(Toplevel())
