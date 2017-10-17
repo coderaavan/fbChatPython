@@ -8,6 +8,7 @@ try:
 except ImportError:
     from Tkinter import *
     from views.formlogin import FormLogin
+    from splash import Loader
 
 
 class App:
@@ -19,8 +20,6 @@ class App:
         self.master.deiconify() # shows the window thats hidden
         self.master.title("fbChat")
         self.master.geometry("250x100")
-        self.currentView = FormLogin(self.master)
-
 
 if __name__ == "__main__":
     win = Tk()

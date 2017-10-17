@@ -4,7 +4,6 @@ except ImportError:
     from Tkinter import *
 
 
-
 class Form(Frame):
 
     def __init__(self, master):

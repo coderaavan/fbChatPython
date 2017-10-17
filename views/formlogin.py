@@ -25,6 +25,7 @@ class FormLogin(Form):
 
     def _initialize_view(self, master):
         self.master.title("fbChat")
+
         self.master.geometry("350x340+600+300")
         self.master.config(bg='#E9EBEE')
         self.master.resizable(0,0)
