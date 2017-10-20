@@ -25,6 +25,7 @@ class FormLogin(Form):
 
     def _initialize_view(self, master):
         self.master.title("fbChat")
+
         self.master.geometry("350x340+600+300")
         self.master.config(bg='#E9EBEE')
         self.master.resizable(0,0)
@@ -58,7 +59,6 @@ class FormLogin(Form):
         self.login_state_info.grid(row=7,column=0,pady=5,ipady=5)
 
     def _on_buttonlogin_clicked(self, event=None):
-        # display logging in text
         self.login_state_info.config(text="Logging you in...")
         self.master.update()
         username = self.username.get()
@@ -74,10 +74,10 @@ class FormLogin(Form):
             FormChatbox(Tk(), client)
 
         except FBchatUserError:
-            self.master.withdraw() # hide the window instead of destroying it
+            self.close()
             try:
                 from .formloginfailure import FormLoginFailure
             except:
                 from formloginfailure import FormLoginFailure
             finally:
-                FormLoginFailure(Toplevel())
+                FormLoginFailure(Tk())

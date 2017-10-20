@@ -3,27 +3,25 @@
 try:
     from tkinter import *
     from views.formlogin import FormLogin
+    from views.splash import SplashScreen
     from tkinter import font
-    from splash import Loader
 except ImportError:
     from Tkinter import *
     from views.formlogin import FormLogin
+    from views.splash import SplashScreen
 
 
 class App:
 
-    def __init__(self,parent_win):
-        # creates a child window to the parent
-        self.master = Toplevel()
-        self.master.update()
-        self.master.deiconify() # shows the window thats hidden
-        self.master.title("fbChat")
-        self.master.geometry("250x100")
-        self.currentView = FormLogin(self.master)
+    def __init__(self):
+        self.master = Tk()
+        self.currentWindow = FormLogin(self.master)
+
+    def run(self):
+        self.master.mainloop()
 
 
 if __name__ == "__main__":
-    win = Tk()
-    app = Loader(win) # this window gets destroyed
-    win_app = App(app)
-    win.mainloop() # the loop ends when it's destroyed
+    SplashScreen()
+    app = App()
+    app.run()
