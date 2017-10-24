@@ -9,7 +9,7 @@ A Tkinter based GUI to login and send messages to your Facebook friends.
 * Switch to project directory
 * Run `pip install -r requirements.txt` for Python 2 or `python -m pip install -r requirements.txt` for Python 3 to install dependencies (may need to be root/admin user to make this work if not
   using a virtualenv - do `sudo pip install -r requirements.txt` or `sudo python -m pip install -r requirements.txt` accordingly instead if this is the case on Linux)
-* Run the command `python main.py` to start the program running
+* Run the command `python main.py` to make the program running
 
 ### Prerequisites
 * Python 2 or Python 3 (<https://www.python.org/downloads/>)
