@@ -68,8 +68,11 @@ class FormChatbox(Form):
             if isSuccess:
                 print("Already Logout...")
                 self.close()
+
                 try:
                     from formlogin import FormLogin
+
                 except ImportError:
                     from .formlogin import FormLogin
+
                 FormLogin(Tk())
