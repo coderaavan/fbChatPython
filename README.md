@@ -18,7 +18,7 @@ A Tkinter based GUI to login and send messages to your Facebook friends.
 
 ## Note
 This app is a very basic one and various features are yet to be implemented.
-PRs are welcome!
+Pull Requests are welcome!
 
 ## Features to be implemented
 * Improve UI
