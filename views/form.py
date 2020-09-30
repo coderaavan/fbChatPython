@@ -1,13 +1,10 @@
-try:
-    from tkinter import *
-except ImportError:
-    from Tkinter import *
+import tkinter as tk
+# import Tkinter as tk in Python 2.x
 
-
-class Form(Frame):
+class Form(tk.Frame):
 
     def __init__(self, master):
-        Frame.__init__(self, master)
+        tk.Frame.__init__(self, master)
         self.master = master
 
     def _initialize(self, master):
